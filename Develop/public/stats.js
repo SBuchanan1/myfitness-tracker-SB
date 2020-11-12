@@ -4,15 +4,15 @@ fetch("/api/workouts/range")
   .then(response => {
     return response.json();
   })
-  .then(data => {
-    populateChart(data);
+  .then(apples => {
+    populateChart(apples);
   });
 
 
 API.getWorkoutsInRange()
 
-  function generatePalette() {
-    const arr = [
+function generatePalette() {
+  const arr = [
     "#003f5c",
     "#2f4b7c",
     "#665191",
@@ -32,11 +32,11 @@ API.getWorkoutsInRange()
   ]
 
   return arr;
-  }
-function populateChart(data) {
-  let durations = duration(data);
-  let pounds = calculateTotalWeight(data);
-  let workouts = workoutNames(data);
+}
+function populateChart(apples) {
+  let durations = duration(apples);
+  let pounds = calculateTotalWeight(apples);
+  let workouts = workoutNames(apples);
   const colors = generatePalette();
 
   let line = document.querySelector("#canvas").getContext("2d");
@@ -151,7 +151,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: "Excercises Performed",
+          label: "Workouts Performed",
           backgroundColor: colors,
           data: durations
         }
@@ -160,7 +160,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: "Excercises Performed"
+        text: "Workouts Performed"
       }
     }
   });
@@ -171,7 +171,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: "Excercises Performed",
+          label: "Workouts Performed",
           backgroundColor: colors,
           data: pounds
         }
@@ -180,16 +180,16 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: "Excercises Performed"
+        text: "Workouts Performed"
       }
     }
   });
 }
 
-function duration(data) {
+function duration(apples) {
   let durations = [];
 
-  data.forEach(workout => {
+  apples.forEach(workout => {
     workout.exercises.forEach(exercise => {
       durations.push(exercise.duration);
     });
@@ -198,10 +198,10 @@ function duration(data) {
   return durations;
 }
 
-function calculateTotalWeight(data) {
+function calculateTotalWeight(apples) {
   let total = [];
 
-  data.forEach(workout => {
+  apples.forEach(workout => {
     workout.exercises.forEach(exercise => {
       total.push(exercise.weight);
     });
@@ -210,14 +210,14 @@ function calculateTotalWeight(data) {
   return total;
 }
 
-function workoutNames(data) {
+function workoutNames(apples) {
   let workouts = [];
 
-  data.forEach(workout => {
+  apples.forEach(workout => {
     workout.exercises.forEach(exercise => {
       workouts.push(exercise.name);
     });
   });
-  
+
   return workouts;
 }
