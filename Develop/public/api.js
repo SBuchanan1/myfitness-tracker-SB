@@ -10,23 +10,23 @@ const API = {
 
     return json[json.length - 1];
   },
-  async addExercise(data) {
+  async addExercise(apples) {
     const id = location.search.split("=")[1];
 
     const res = await fetch("/api/workouts/" + id, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify(apples)
     });
 
     const json = await res.json();
 
     return json;
   },
-  async createWorkout(data = {}) {
+  async createWorkout(apples = {}) {
     const res = await fetch("/api/workouts", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(apples),
       headers: { "Content-Type": "application/json" }
     });
 
