@@ -1,27 +1,27 @@
 const express = require("express");
+const logger = require("morgan");
 const mongoose = require("mongoose");
-const morgan = require("morgan");
+
+const PORT = 3000;
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-const db = require("./models");
 
-
-app.use(morgan("dev"));
+app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
-mongoose.connect(MONGODB_URI, {
+app.use(express.static("public"));
+
+mongoose.connect("mongodb://localhost/workout", {
     useNewUrlParser: true,
     useFindAndModify: false
-})
+});
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// routes
+app.use(require("./routes/api.js"));
+app.use(require("./routes/view.js"));
 
-app.listen(PORT, function () {
-    console.log(`App listening on Port ${PORT}`);
+app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}!`);
 });
