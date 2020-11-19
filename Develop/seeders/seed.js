@@ -12,7 +12,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Bicep Curl",
+        name: "Sit-Up",
         duration: 20,
         weight: 100,
         reps: 10,
@@ -25,7 +25,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Lateral Pull",
+        name: "Arm raises w/ weights",
         duration: 20,
         weight: 300,
         reps: 10,
@@ -38,7 +38,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Push Press",
+        name: "Lunges with weights",
         duration: 25,
         weight: 185,
         reps: 8,
@@ -51,7 +51,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "cardio",
-        name: "Running",
+        name: "Jogging",
         duration: 25,
         distance: 4
       }
@@ -62,7 +62,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Bench Press",
+        name: "Bent over row",
         duration: 20,
         weight: 285,
         reps: 10,
@@ -75,7 +75,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Bench Press",
+        name: "Bent over row",
         duration: 20,
         weight: 300,
         reps: 10,
@@ -88,7 +88,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Quad Press",
+        name: "Chest Press",
         duration: 30,
         weight: 300,
         reps: 10,
@@ -101,7 +101,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Bench Press",
+        name: "Chest Press",
         duration: 20,
         weight: 300,
         reps: 10,
@@ -114,7 +114,7 @@ let workoutSeed = [
     exercises: [
       {
         type: "resistance",
-        name: "Military Press",
+        name: "Bench Press",
         duration: 20,
         weight: 300,
         reps: 10,
